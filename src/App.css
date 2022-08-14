@@ -1,38 +1,289 @@
-.App {
+html {
+  height: 100%;
+  width: 100%;
+}
+body {
+  background: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+}
+h1 {
   text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: #24527a;
+  text-transform: uppercase;
+  margin-bottom: -5px;
+}
+ul {
+  list-style: none;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.largeMain {
+  max-width: 700px;
+  max-height: 800px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 50px;
+  border: 30px;
+  margin-bottom: 5px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  border-collapse: separate;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.cardWrapper {
+  text-align: center;
+  border-radius: 20px;
+}
+.btncurrent {
+  margin-left: -50px;
+  transition: ease-in-out;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.searchForm {
+  margin-left: -5px;
+}
+.btnsearch {
+  right: 15px;
+  left: 0px;
+}
+.input-group {
+  width: 600px;
+  margin: 0 auto;
+}
+.tempRange {
+  color: #606470;
+  text-align: left;
+  font-weight: 300;
+  font-size: 18px;
+  list-style-type: none;
+  margin-top: -5px;
+  margin-left: -3px;
+}
+.date {
+  text-align: right;
+  list-style-type: none;
+  margin-right: 23px;
+  margin-top: -5px;
+}
+.cityName {
+  text-align: center;
+  padding: 20px;
+  margin-left: 7px;
 }
 
-.App-link {
-  color: #61dafb;
+.weatherDescription {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  color: #24527a;
+  margin-bottom: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card-temp-min {
+  color: #878787;
+}
+.weatherDescription .units {
+  font-size: 14px;
+  top: -15px;
+  left: 75px;
+  text-decoration: none;
+  position: relative;
+  cursor: default;
+  transition: all 150ms ease-in-out;
+  color: #24527a;
+}
+
+.celsiusLink {
+  color: #878787;
+}
+.weatherDescription .units .activeFahrenheitLink {
+  color: #24527a;
+  font-size: 14px;
+  font-weight: bolder;
+  text-decoration: none;
+  cursor: default;
+  transition: all 150ms ease-in-out;
+}
+
+.weatherDescription .units .activeFahrenheitLink:focus {
+  color: #24527a;
+  font-weight: bolder;
+  font-size: 20px;
+  text-decoration: none;
+  cursor: default;
+  transition: all 150ms ease-in-out;
+}
+
+.weatherDescription .units .activeFahrenheitLink:visited {
+  color: #24527a;
+  font-weight: bolder;
+  font-size: 20px;
+  text-decoration: none;
+  cursor: default;
+  transition: all 150ms ease-in-out;
+}
+.weatherDescription .units .activeFahrenheitLink:active {
+  color: #24527a;
+  font-weight: bolder;
+  font-size: 20px;
+  text-decoration: none;
+  cursor: default;
+  transition: all 150ms ease-in-out;
+}
+
+.weatherDescription .units .activeFahrenheitLink:hover {
+  color: #24527a;
+  font-size: 20px;
+  font-weight: bolder;
+  text-decoration: none;
+  cursor: default;
+  transition: all 150ms ease-in-out;
+}
+
+.weatherDescription .units .celsiusLink:hover {
+  color: #606470;
+  font-size: 20px;
+  font-weight: bolder;
+  text-decoration: none;
+  cursor: default;
+  transition: all 150ms ease-in-out;
+}
+
+.weatherDescription .units .celsiusLink:focus {
+  color: #24527a;
+  font-size: 20px;
+  font-weight: bolder;
+  text-decoration: none;
+  cursor: default;
+  transition: all 150ms ease-in-out;
+}
+.weatherDescription .units .celsiusLink:visited {
+  color: #606470;
+  font-weight: bolder;
+  font-size: 20px;
+  text-decoration: none;
+  cursor: default;
+  transition: all 150ms ease-in-out;
+}
+.weatherDescription .units .celsiusLink:active {
+  color: #606470;
+  font-weight: bolder;
+  font-size: 20px;
+  text-decoration: none;
+  cursor: default;
+  transition: all 150ms ease-in-out;
+}
+
+.weatherDescription .units .divider {
+  margin-left: 5px;
+}
+
+.currentTemp {
+  margin-right: -80px;
+  font-size: 30px;
+}
+
+.humidityIcon,
+.windIcon,
+.uvIndexIcon {
+  width: 20px;
+}
+
+.icon {
+  width: 90px;
+  margin-top: -20px;
+}
+.btn-success:hover {
+  color: #28a745;
+  background-color: transparent;
+  transition: ease-in-out 0.15s;
+  border-color: #28a745;
+}
+.btn-success {
+  background-color: #28a745;
+}
+.currentDescription {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 28px;
+  text-align: center;
+  margin: 10 auto;
+  display: block;
+  color: #40a8c4;
+  text-transform: uppercase;
+  margin-bottom: -21px;
+}
+.weatherDetails {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  color: #606470;
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.weekReview {
+  margin: 0 auto;
+  margin-bottom: 100px;
+}
+
+.weekDays {
+  font-family: "Montserrat", sans-serif;
+  margin: 0 auto;
+  text-align: center;
+  color: #24527a;
+}
+
+.card-title {
+  margin-top: 5px;
+  margin-bottom: -1px;
+}
+.card-content {
+  font-size: 13px;
+}
+.forecastInfo {
+  color: #24527a;
+  margin: 0 auto;
+  width: 90%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+}
+
+.forecastDisplay {
+  margin: 0 auto;
+  height: 105px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  margin-top: 2px;
+  margin-bottom: 5px;
+}
+
+.forecastDescription {
+  color: #40a8c4;
+  font-size: 12px;
+}
+.footer {
+  color: #e0ebeb;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+}
+.footerLink {
+  text-decoration: none;
+  color: #e0ebeb;
+}
+
+.footerLink:hover {
+  color: #fdd020;
+  font-size: 16px;
+  transition: all 150ms ease-in-out;
+  background-color: transparent;
+  font-weight: bolder;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
 }
