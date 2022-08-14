@@ -1,61 +1,86 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
-export default function Weather(prop) {
-  return (
-    <div className="weather">
-      <div className="tempRange">
-        <div className="row">
-          <div className="col-6" id="temp-hi-low">
-            <ul>
-              <li className="tempRange" id="temp-Hi">
-                Hi 75
-              </li>
-              <li className="tempRange" id="temp-Low">
-                Low 50
-              </li>
-            </ul>
-          </div>
-          <div className="col-6" id="current-Date-Time">
-            <ul>
-              <li className="date" id="current-Date">
-                Saturday, July 16, 2022
-              </li>
-              <li className="date" id="current-Hour">
-                9:30 PM PST
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div className="weatherDescription" id="weatherDescription">
-        <ul>
-          <img
-            src="https://ssl.gstatic.com/onebox/weather/48/sunny_s_cloudy.png"
-            alt="Clear"
-            id="icon"
-            className="float-left icon"
+import "./weather.css";
+
+export default function Weather() {
+  const [city, setCity] = useState("null");
+  const [loaded, setLoaded] = useState(false);
+  const [weather, setWeather] = useState("");
+
+  function displayWeather(response) {
+    console.log();
+    setLoaded(true);
+    setWeather({
+      temperature: response.data.main.temp,
+      description: response.data.weather[0].description,
+      humidity: response.data.main.humidity,
+      wind: response.data.wind.speed,
+      fahrenheit: (response.data.main.temp * 9) / 5 + 32,
+      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      maxTemp: response.data.main.temp_max,
+      minTemp: response.data.main.temp_min,
+      city: response.data.name,
+    });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function updateCity(event) {
+    setCity(event.target.value);
+  }
+
+  function search() {
+    let apiKey = "91f41f9a3182f09b51571aedfc243a1c";
+    let units = "metric";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+    axios.get(apiUrl).then(displayWeather);
+  }
+
+  let form = (
+    <div className="card">
+      <div className="Weather">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="search"
+            autoFocus="on"
+            autoComplete="off"
+            onChange={updateCity}
+            placeholder="Enter city name..."
+            className="form-control"
           />
-
-          <li id="current-City">Seattle</li>
-          <li className="currentDescription" id="currentDescription">
-            Mostly Clear
-          </li>
-        </ul>
-        <span className="currentTemp" id="currentTemp">
-          65
-        </span>
-        <span className="units" id="units">
-          <a href="/#" className="activeFahrenheitLink">
-            {" "}
-            °F
-          </a>
-          |
-          <a href="/#" className="celsiusLink">
-            {" "}
-            °C
-          </a>
-        </span>
+          <input
+            type="submit"
+            value="Search"
+            className="form-control btn btn-danger w-100"
+          />
+        </form>
       </div>
     </div>
   );
+  if (loaded) {
+    return (
+      <div className="WeatherDetails">
+        {form}
+        <ul>
+          <li>
+            <img src={weather.icon} alt={weather.description} />
+          </li>
+          <li className="weatherDescription">{weather.city}</li>
+          <li className="weatherDescription">{weather.description}</li>
+          <li>
+            {Math.round(weather.temperature)}°C |{" "}
+            {Math.round(weather.fahrenheit)}°F
+          </li>
+          <li>Humidity: {weather.humidity}%</li>
+          <li>Wind: {weather.wind}km/h</li>
+        </ul>
+      </div>
+    );
+  } else {
+    return form;
+  }
 }
