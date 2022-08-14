@@ -45,12 +45,12 @@ export default function Weather(prop) {
           65
         </span>
         <span className="units" id="units">
-          <a href="#" className="activeFahrenheitLink">
+          <a href="/#" className="activeFahrenheitLink">
             {" "}
             °F
           </a>
           |
-          <a href="#" className="celsiusLink">
+          <a href="/#" className="celsiusLink">
             {" "}
             °C
           </a>
